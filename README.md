@@ -1,4 +1,4 @@
-# classroom-demo
+# hello-classroom
 
 ## Introduction
 This repository is meant to be a quick guide to deploying a Github Classroom in support of classes at [Binghamton University](https://www.binghamton.edu/computer-science/index.html), although instructors at other institutions may find it useful.
