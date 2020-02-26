@@ -30,22 +30,21 @@
 The Fibonacci Sequence is the sequence of numbers defined by the following linear recurrence relation:
 
 \begin{equation}
-  \left \{     F_n     \right \}_{n=1}^{\infty } = \begin{cases}
-    0 & F_1 \\
-    1 & F_2 \\
+  \left \{     F_n     \right \}_{n=0}^{\infty } = \begin{cases}
+    0 & F_0\\
+    1 & F_1 \\
     F_{n-1} + F_{n-2} & F_n
   \end{cases}
 \end{equation}
 
 Write the function \texttt{int isFib(unsigned long i)} such that given an integer $i$, the function returns $n$, where $i$ is $F_n$ if it is a Fibonacci number. 
 If $i$ is not a Fibonacci number, then the function returns -1.
- Assume that {\it i} is in the range $ 0 \le i \le 1000000000$.
+Assume that $ 0 \le i \le 1000000000$.
 
 \subsubsection{Notes}
-\begin{itemize}
-  \item Note that our sequence is 1-indexed and begins with 0 as the first element. This deviates from definitions of the sequence that you may find elsewhere.
-  \item Note that both $F_2$ and $F_3$ are 1. If $i$ is 1, return 2.
-\end{itemize}
+Note that our sequence is 0-indexed and begins with 0 as the first element. 
+This follows convention as described by \href{https://oeis.org/A000045}{OEIS sequence A000045}.
+Thus both $F_1$ and $F_2$ are 1, and therefore if $i$ is 1, return 1.
 
 \subsubsection{Examples}
 
@@ -55,9 +54,10 @@ If $i$ is not a Fibonacci number, then the function returns -1.
     \hline
     {\it i} & {\it n} \\
     \hline
-    0 & 1 \\
-    1 & 2 \\
-    2 & 4 \\
+    0 & 0 \\
+    1 & 1 \\
+    2 & 3 \\
+    3 & 4 \\
     4 & -1 \\
     \hline
   \end{tabular}
