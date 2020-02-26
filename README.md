@@ -3,7 +3,7 @@
 ## Introduction
 This repository is meant to be a quick guide to deploying a Github Classroom in support of classes at [Binghamton University](https://www.binghamton.edu/computer-science/index.html), although instructors at other institutions may find it useful.
 
-To see what a repository for use as assignment starter code looks like, ~~[visit this repository](https://github.com/bucs220/hello-classroom).~~ **See issue [#1](https://github.com/colematt/hello-classroom/issues/1)**
+To see what a repository for use as assignment starter code looks like, ~~visit the submodule repository~~ **See issue [#1](https://github.com/colematt/hello-classroom/issues/1)**
 
 To see what an assignment based on that repository looks like, ~~accept this assignment~~ **See issue [#1](https://github.com/colematt/hello-classroom/issues/1)**
 
