@@ -18,3 +18,10 @@ jobs:
         uses: xu-cheng/latex-action@master
         with:
           root_file: docs/instructions.tex
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          # Artifact name
+          name: instructions.pdf
+          # Directory containing files to upload
+          path: docs/
