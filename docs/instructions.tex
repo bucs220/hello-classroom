@@ -3,6 +3,7 @@
 \usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{todonotes}
+\usepackage{blindtext}
 
 \begin{document}
 
@@ -15,7 +16,7 @@
 \begin{itemize}
   \item Answer the questions individually. Group effort is not allowed. If you utilize code you found online or in print, you must cite its origin within your source code in accordance with the class syllabus' academic honesty and integrity policies.
   \item Solutions must be committed to your assignment repository on Github.
-  \item Ensure that your code runs on \texttt{remote.cs.binghamton.edu}.
+  \item Your code will be evaluated on Github Actions.
   \item Useful resources:
   \begin{itemize}
     \item \href{http://www.informit.com/blogs/blog.aspx?uk=The-10-Most-Important-Linux-Commands}{Common Linux Commands}
@@ -25,34 +26,54 @@
 \end{itemize}
 
 \section{Questions}
+
+\subsection{Hello World!}
+\subsubsection{Description}
+Print {\tt hello world} to standard output with a trailing newline.
+
+\subsubsection{Notes}
+\blindtext
+
+\subsubsection{Examples}
+\blindtext
+
+\subsection{FizzBuzz}
+\subsubsection{Description}
+\blindtext
+
+\subsubsection{Notes}
+\blindtext
+
+\subsubsection{Examples}
+\blindtext
+
 \subsection{Fibonacci Elements}
 \subsubsection{Description}
-The Fibonacci Sequence is the sequence of numbers defined by the following linear recurrence relation:
+The Fibonacci sequence is the sequence of numbers defined by the following linear recurrence relation:
 
 \begin{equation}
-  \left \{     F_n     \right \}_{n=0}^{\infty } = \begin{cases}
+  \left \{     F_i     \right \}_{i=0}^{\infty } = \begin{cases}
     0 & F_0\\
     1 & F_1 \\
-    F_{n-1} + F_{n-2} & F_n
+    F_{i-1} + F_{i-2} & F_i
   \end{cases}
 \end{equation}
 
-Write the function \texttt{int isFib(unsigned long i)} such that given an integer $i$, the function returns $n$, where $i$ is $F_n$ if it is a Fibonacci number. 
-If $i$ is not a Fibonacci number, then the function returns -1.
-Assume that $ 0 \le i \le 1000000000$.
+Write the function \texttt{int isFib(unsigned long n)} such that given an integer $n$, the function returns the index in the Fibonacci sequence $i$, where $F_i = n$ if it is a Fibonacci number. 
+If $n$ is not a Fibonacci number, then the function returns -1.
+Assume that $ 0 \le n \le 10^9 $.
 
 \subsubsection{Notes}
 Note that our sequence is 0-indexed and begins with 0 as the first element. 
 This follows convention as described by \href{https://oeis.org/A000045}{OEIS sequence A000045}.
-Thus both $F_1$ and $F_2$ are 1, and therefore if $i$ is 1, return 1.
+Thus both $F_1$ and $F_2$ are 1, and therefore if $n$ is 1, return 1.
 
 \subsubsection{Examples}
 
-\begin{center}
-  \label{fibexamples}
-  \begin{tabular}{|l|l|}
+\begin{table}[ht]
+    \begin{tabular}{|l|l|}
     \hline
-    {\it i} & {\it n} \\
+    {$n$} & {$i$} \\
     \hline
     0 & 0 \\
     1 & 1 \\
@@ -61,6 +82,18 @@ Thus both $F_1$ and $F_2$ are 1, and therefore if $i$ is 1, return 1.
     4 & -1 \\
     \hline
   \end{tabular}
-\end{center}
+  \caption{For a given $n$, the return value $i$ expected.}
+\end{table}
+
+\subsection{Longest Collatz Sequence}
+\subsubsection{Description}
+Let the length of a collatz sequence be the number of terms in the sequence starting with $i$.
+Which natural number less than or equal to $n$ has the longest length?
+
+\subsubsection{Notes}
+\blindtext
+
+\subsubsection{Examples}
+\blindtext
 
 \end{document}
