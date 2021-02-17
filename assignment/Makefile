@@ -1,11 +1,14 @@
-all: libfunctions.a test
+all: test
 
-functions.o: _functions.c
+_functions.o: _functions.c
+	$(CC) -c $^
 
-libfunctions.a: functions.o
+libfunctions.a: _functions.o
+	$(AR) -rc $@ $^
 
 test: test.c libfunctions.a
+	$(CC) -o $@ test.c functions.c -L. -lfunctions -lcunit
 
 .PHONY: clean
 clean:
-	rm -fv functions.o libfunctions.a test *~ 
+	rm -fv _functions.o libfunctions.a test *~ 
