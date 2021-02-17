@@ -1,4 +1,6 @@
 \documentclass{article}
+
+\usepackage{ascii}
 \usepackage{times}
 \usepackage{hyperref}
 \usepackage{amsmath}
@@ -15,8 +17,9 @@
 \section{Instructions}
 \begin{itemize}
   \item Answer the questions individually. Group effort is not allowed. If you utilize code you found online or in print, you must cite its origin within your source code in accordance with the class syllabus' academic honesty and integrity policies.
+  \item Unless otherwise specified, you may include any header from libc and libmath. You may not link to other library code.
   \item Solutions must be committed to your assignment repository on Github.
-  \item Your code will be evaluated on Github Actions.
+  \item Your code will be evaluated using a CUnit test suite (see {\bf test.c}).
   \item Useful resources:
   \begin{itemize}
     \item \href{http://www.informit.com/blogs/blog.aspx?uk=The-10-Most-Important-Linux-Commands}{Common Linux Commands}
@@ -27,27 +30,27 @@
 
 \section{Questions}
 
-\subsection{Hello World!}
+\subsection{Summation of Two Integers}
 \subsubsection{Description}
-Print {\tt hello world} to standard output with a trailing newline.
-
-\subsubsection{Notes}
-\blindtext
+Write the function {\tt long sum(int a, int b)} such that given integers $a,b$, the function returns the sum of these integers.
 
 \subsubsection{Examples}
-\blindtext
+See Table \ref{tab:sum}
 
-\subsection{FizzBuzz}
-\subsubsection{Description}
-\blindtext
+\begin{table}[h!]
+\begin{tabular}{ll|l}
+\multicolumn{2}{l|}{Input} & Output \\
+a            & b           &        \\ \hline
+0            & 0           & 0      \\
+1            & 2           & 3      \\
+5            & -3          & 2      \\
+-5           & 3           & -2    
+\end{tabular}
+\caption{Inputs and expected outputs for {\tt long sum(int a, int b)}.}
+\label{tab:sum}
+\end{table}
 
-\subsubsection{Notes}
-\blindtext
-
-\subsubsection{Examples}
-\blindtext
-
-\subsection{Fibonacci Elements}
+\subsection{Fibonacci Sequence}
 \subsubsection{Description}
 The Fibonacci sequence is the sequence of numbers defined by the following linear recurrence relation:
 
@@ -59,41 +62,58 @@ The Fibonacci sequence is the sequence of numbers defined by the following linea
   \end{cases}
 \end{equation}
 
-Write the function \texttt{int isFib(unsigned long n)} such that given an integer $n$, the function returns the index in the Fibonacci sequence $i$, where $F_i = n$ if it is a Fibonacci number. 
-If $n$ is not a Fibonacci number, then the function returns -1.
-Assume that $ 0 \le n \le 10^9 $.
-
-\subsubsection{Notes}
-Note that our sequence is 0-indexed and begins with 0 as the first element. 
-This follows convention as described by \href{https://oeis.org/A000045}{OEIS sequence A000045}.
-Thus both $F_1$ and $F_2$ are 1, and therefore if $n$ is 1, return 1.
+See \href{https://oeis.org/A000045}{OEIS sequence A000045}.
+Write the function {\tt bool isFib(int n)} such that given an integer $n$, the function returns true if n is a term in the Fibonacci sequence, and false otherwise.
 
 \subsubsection{Examples}
+See Table \ref{tab:isfib}
 
-\begin{table}[ht]
-    \begin{tabular}{|l|l|}
-    \hline
-    {$n$} & {$i$} \\
-    \hline
-    0 & 0 \\
-    1 & 1 \\
-    2 & 3 \\
-    3 & 4 \\
-    4 & -1 \\
-    \hline
-  \end{tabular}
-  \caption{For a given $n$, the return value $i$ expected.}
+\begin{table}[h!]
+\begin{tabular}{l|l}
+Input & Output \\
+n     &        \\ \hline
+0     & true   \\
+1     & true   \\
+2     & true   \\
+3     & true   \\
+4     & false 
+\end{tabular}
+\caption{Inputs and expected outputs for {\tt bool isFib(int n)}.}
+\label{tab:isfib}
 \end{table}
 
-\subsection{Longest Collatz Sequence}
+\subsection{FizzBuzz}
 \subsubsection{Description}
-Let the length of a collatz sequence be the number of terms in the sequence starting with $i$.
-Which natural number less than or equal to $n$ has the longest length?
+FizzBuzz is a game where players take turns reciting the next natural number with the following rules:
 
-\subsubsection{Notes}
-\blindtext
+\begin{itemize}
+  \item If the number is divisible by 3, the player says {\it FIZZ}
+  \item If the number is divisible by 5, the player says {\it BUZZ}
+  \item If the number is divisible by both 3 and 5, the player says {\it FIZZBUZZ}
+  \item Otherwise, the player says the number.
+\end{itemize}
+
+Write a function {\tt char* fizzbuzz(int i, char* dest, size\_t n)}, such that given an integer $i$, and a buffer $dest$ of size $n$, the player's response is written into the buffer and null-terminated.
+The response is guaranteed to fit into the buffer, including the null terminator.
+The integer is not guaranteed to be positive, and thus any negative sign must also be written into the buffer.
 
 \subsubsection{Examples}
-\blindtext
+Assume there is a buffer located on the stack at address {\tt 0x7fffdd35c940}.
+See Table \ref{tab:fizzbuzz}.
+
+\begin{table}[h!]
+\begin{tabular}{lll|l}
+\multicolumn{3}{l|}{Input} & Output                                        \\
+i    & dest           & n  & ASCII Contents of dest (without quotes)       \\ \hline
+3    & 0x7fffdd35c940 & 9  & "FIZZ\NUL\NUL\NUL\NUL\NUL"                    \\
+5    & 0x7fffdd35c940 & 9  & "BUZZ\NUL\NUL\NUL\NUL\NUL"                    \\
+15   & 0x7fffdd35c940 & 9  & "FIZZBUZZ\NUL"                                \\
+16   & 0x7fffdd35c940 & 9  & "16\NUL\NUL\NUL\NUL\NUL\NUL\NUL"              \\
+-45  & 0x7fffdd35c940 & 12 & "-45\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL" \\
+0   & 0x7fffdd35c940 & 9  & "FIZZBUZZ\NUL"  
+\end{tabular}
+\caption{Inputs and expected outputs for {\tt char* fizzbuzz(int i, char* dest, size\_t n)}.}
+\label{tab:fizzbuzz}
+\end{table}
 
 \end{document}
